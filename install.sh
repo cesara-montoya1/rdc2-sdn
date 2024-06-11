@@ -16,7 +16,7 @@ for FOLDER in "${CUSTOM_PATHS[@]}"; do
 
     # Copies folders contents into destination
     echo "Copying ./$FOLDER to /home/mininet/$FOLDER."
-    cp -f "./$FOLDER/*" "/home/mininet/$FOLDER"
+    cp -f "./$FOLDER/"* "/home/mininet/$FOLDER"
     
     # Check if the copy was successful
     if [ $? -eq 0 ]; then
