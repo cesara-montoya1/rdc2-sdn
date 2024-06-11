@@ -1,31 +1,29 @@
 #!/bin/bash
 
-# Variables
-REPO_PATH="."
-MININET_CUSTOM_FOLDER="mininet/custom"
-DEST_PATH="/home/mininet/$MININET_CUSTOM_FOLDER"
+# Paths
+CUSTOM_PATHS=("mininet/custom" "pox/pox/misc")
 
-# Check if the source folder exists
-if [ ! -d "$REPO_PATH/$MININET_CUSTOM_FOLDER" ]; then
-    echo "Source folder $REPO_PATH/$MININET_CUSTOM_FOLDER does not exist."
-    exit 1
-fi
+for FOLDER in "${CUSTOM_PATHS[@]}"; do
+    # Check the source folders exists and creates destination folder
+    if [ ! -d "$FOLDER" ]; then
+        echo "Source folder $FOLDER not found."
+        exit 1
+    fi
+    if [ ! -d "/home/mininet/$FOLDER" ]; then
+        echo "Creating destination directory /home/mininet/$FOLDER."
+        mkdir -p /home/mininet/$FOLDER
+    fi
 
-# Create the destination directory if it doesn't exist
-if [ ! -d "$DEST_PATH" ]; then
-    echo "Creating destination directory $DEST_PATH."
-    mkdir -p "$DEST_PATH"
-fi
-
-# Copy the custom folder
-echo "Copying $REPO_PATH/$MININET_CUSTOM_FOLDER to $DEST_PATH."
-cp -r "$REPO_PATH/$MININET_CUSTOM_FOLDER/"* "$DEST_PATH/"
-
-# Check if the copy was successful
-if [ $? -eq 0 ]; then
-    echo "Folder copied successfully."
-else
-    echo "Failed to copy the folder."
-    exit 1
-fi
+    # Copies folders contents into destination
+    echo "Copying $FOLDER to /home/mininet/$FOLDER."
+    cp -r "$FOLDER/*" "/home/mininet/$FOLDER"
+    
+    # Check if the copy was successful
+    if [ $? -eq 0 ]; then
+        echo "Folder copied successfully."
+    else
+        echo "Failed to copy the folder."
+        exit 1
+    fi
+done
 
