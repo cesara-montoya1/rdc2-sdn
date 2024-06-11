@@ -3,7 +3,7 @@ from mininet.node import OVSSwitch
 
 
 class Lab1Topo(Topo):
-    def build(self, n=4):
+    def __init__(self, n=4):
         Topo.__init__(self)
         switches = []
         hosts = []
