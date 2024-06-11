@@ -7,8 +7,6 @@ class Lab1Topo(Topo):
         Topo.__init__(self)
         switches = []
         hosts = []
-        # Leer el parámetro n
-        n = int(input("Enter the number of hosts: "))
         for i in range(n):
             # Añadir switch con capacidad de STP
             swx = self.addSwitch(f"s{i+1}", cls=OVSSwitch, stp=1,
