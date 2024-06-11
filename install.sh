@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Variables
-REPO_PATH="./"
+REPO_PATH="."
 MININET_CUSTOM_FOLDER="mininet/custom"
-DEST_PATH="/home/$MININET_CUSTOM_FOLDER"
+DEST_PATH="/home/mininet/$MININET_CUSTOM_FOLDER"
 
 # Check if the source folder exists
 if [ ! -d "$REPO_PATH/$MININET_CUSTOM_FOLDER" ]; then
