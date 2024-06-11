@@ -29,7 +29,7 @@ def read_firewall_policies(file_path):
 log = core.getLogger()
 
 # Cree variables globales acá
-POLICIES_FILE = f"{os.environ["HOME"]}/pox/pox/misc/firewall-policies.csv"
+POLICIES_FILE = f"{os.environ['HOME']}/pox/pox/misc/firewall-policies.csv"
 FIREWALL_POLICIES = read_firewall_policies(POLICIES_FILE)
 
 
